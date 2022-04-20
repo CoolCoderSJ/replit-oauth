@@ -1,1 +1,1 @@
-https://replit-ouath.readme.io
+https://replit-oauth.readme.io
