@@ -1,0 +1,91 @@
+<html>
+	<head>
+		<title>Replit Oauth</title>
+		<link rel="stylesheet" type="text/css" href="https://replcss.sixbeeps.repl.co/style.css">
+		<link rel="stylesheet" type="text/css" href="/static/style.css">
+	</head>
+
+	<body>
+		<style>
+			.replit-box {
+				width: fit-content;
+				padding: 15px;
+			}
+			body {
+				padding: 20px;
+			}
+		</style>
+		<center>
+			<h2>Authorized Applications</h2>
+			<br>
+			{% for token in tokens %}
+			<div class="replit-box">
+				<center><h3>{{ token[0]['name'] }}</h3></center>
+				<br>
+				<h3>Permissions granted: </h3>
+				{% for scope in token[2] %}
+				<h4>- {{ token[2][scope] }}</h4>
+				{% endfor %}
+				<center>
+					<br>
+				<form method="post" action="/revoke">
+					<input type="hidden" name="token" value="{{ token[3] }}" >
+					<button>Revoke Access</button>
+				</form>
+				</center>
+			</div>
+			<br>
+			{% endfor %}
+			<br><br>
+			<h2>My Apps</h2>
+			<br>
+			{% for app in apps %}
+			<div class="replit-box">
+				<h4>Name</h4>
+				<form method="post" action="/edit">
+				<input name="name" value="{{ app[0]['name'] }}" placeholder="name" />
+
+				<br><br>
+				<h4>Redirect URIs (comma separated, e.g. url1, url2)</h4>
+				<input name="redirectUris" value="{{ app[0]['redirectUris'] }}" placeholder="redirect URIs" />
+
+				<br><br>
+				<h4>Client ID</h4>
+				<input name="clientid" value="{{ app[1] }}" readonly />
+				<br><br>
+				
+				<h4>Client Secret</h4>
+				<input name="secret" value="{{ app[0]['clientSecret'] }}" readonly />
+				<br><br>
+				<button>Save</button>
+				</form>
+
+				<form method="post" action="/delete">
+				<input name="clientid" value="{{ app[1] }}" type="hidden" />
+				<button>Delete App</button>
+				</form>
+			</div>
+			<br>
+			{% endfor %}
+
+			<br><br>
+			<h2>New Application</h2>
+			<br>
+			<div class="replit-box">
+				<h4>Name</h4>
+				<form method="post" action="/">
+				<input name="name" placeholder="Name" />
+
+				<br><br>
+				<h4>Redirect URIs (comma separated, e.g. url1, url2)</h4>
+				<input name="redirectUris" placeholder="Redirect URIs" />
+
+				<br><br>
+				<button>Add</button>
+				</form>
+			</div>
+			<br>			
+			</center>
+		
+	</body>
+</html>

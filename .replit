@@ -1,0 +1,5 @@
+run="npx nodemon -x 'python runner.py || touch runner.py'"
+language="python3"
+
+[packager]
+ignoredPaths=[".git"]

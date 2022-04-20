@@ -1,0 +1,30 @@
+:root {
+	--replit-lighter: #fff;
+}
+
+.login {
+	margin: auto;
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	text-align: center;
+	margin-top: 75px;
+}
+
+.login form {
+	display: flex;
+	flex-direction: column;
+	width: auto;
+	gap: 15px;
+}
+
+button {
+	background: var(--replit-accent-1);
+	border: none;
+}
+
+button:hover {
+	background: var(--replit-accent-2);
+	border: none;
+}

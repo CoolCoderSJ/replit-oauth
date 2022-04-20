@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<title>Replit Oauth Login</title>
+		<link rel="stylesheet" type="text/css" href="https://replcss.sixbeeps.repl.co/style.css">
+		<link rel="stylesheet" type="text/css" href="/static/style.css">
+		<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+
+		<script type="text/javascript">
+		  function onSubmit(token) {
+		    document.getElementById('captchaToken').value = token;
+			document.getElementsByTagName("form")[0].submit()
+		  }
+		</script>
+	</head>
+
+	<body style="display: flex;">
+		<div class="replit-box login">
+		<h2>Login</h2>
+		<form method="post" action="/login">
+		<input name="username" placeholder="Username">
+		<input name="password" type="password" placeholder="Password">
+
+		<hr style="width: 80%;">
+			
+		<h4>Login with other services like Google? Enter your connect.sid instead</h4>
+		<input name="sid" placeholder="connect.sid">
+
+		<input type="hidden" name="goto" value="{{ goto }}">
+		<input type="hidden" name="captchaToken" id="captchaToken" >
+		<button class="h-captcha" data-sitekey="473079ba-e99f-4e25-a635-e9b661c7dd3e" data-callback="onSubmit">Login</button>
+		</form>
+		</div>
+	</body>
+</html>

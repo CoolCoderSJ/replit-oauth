@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<title>Replit Oauth</title>
+		<link rel="stylesheet" type="text/css" href="https://replcss.sixbeeps.repl.co/style.css">
+		<link rel="stylesheet" type="text/css" href="/static/style.css">
+	</head>
+
+	<body style="display: flex;">
+		<div class="replit-box login">
+			<h2>Allow {{ name }} to access your account?</h2>
+			
+		<form method="post" action="/authorize" style="flex-direction: row;">
+			
+			<div style="text-align: left;">
+			<p>They will be able to...</p>
+
+			{% for scope in scopes %}
+			<p>- {{ scopes[scope] }}</p>
+			{% endfor %}
+		</div>
+
+		<input type="hidden" name="scopes" value="{{ scopes }}">
+		<input type="hidden" name="redirectUri" value="{{ redirectUri }}">
+		<input type="hidden" name="clientId" value="{{ clientId }}">
+		<br><br>
+			<div>
+			<p>Don't want to allow this? Just close the page.</p>
+		<button>Authorize</button>
+				</div>
+		</form>
+		</div>
+	</body>
+</html>
